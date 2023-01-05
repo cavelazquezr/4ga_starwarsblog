@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
@@ -14,13 +14,27 @@ const Layout = () => {
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 
+	//favorite and methods
+
+	const [favorites, setFavorites] = useState([]);
+
+
+	const addFavorite = (newFavorite) => {
+		setFavorites([...new Set([...favorites, newFavorite])])
+	}
+
+	const removeFavorite = (index) => {
+		favorites.splice(index, 1);
+		setFavorites([...favorites])
+	}
+
 	return (
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
+					<Navbar favorites={favorites} removeFavorite={removeFavorite}/>
 					<Routes>
-						<Route path="/" element={<Home />} />
+						<Route path="/" element={<Home addFavorite={addFavorite}/>} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer />

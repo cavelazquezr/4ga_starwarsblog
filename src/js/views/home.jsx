@@ -3,9 +3,10 @@ import "../../styles/home.css";
 import {getPeople} from "../service/getPeople.js"
 import {getPlanets} from "../service/getPlanets.js"
 import PeopleList from "../component/peopleList.jsx"
+import PlanetList from "../component/planetList.jsx";
 
 
-const Home = () => {
+const Home = (props) => {
 
 	//states
 	const [peopleData, setPeopleData] = useState([])
@@ -18,8 +19,10 @@ const Home = () => {
 	},[])
 
 	return(
-
-		<PeopleList peopleData={peopleData}/>
+		<div className="container-sm">
+			<PeopleList peopleData={peopleData} addFavorite={props.addFavorite}/>
+			<PlanetList planetsData={planetsData} addFavorite={props.addFavorite}/>
+		</div>
 	)
 
 }

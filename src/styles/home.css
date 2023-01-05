@@ -1,3 +1,16 @@
+/* For navbar */
+.nav-logo{
+    width: 80px;
+}
+
 .characterCard{
     width: 400px;
 }
+
+/* Wrapper */
+.wrapper{
+    list-style: none;
+    display: flex;
+    overflow-x: auto;
+}
+
