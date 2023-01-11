@@ -27,7 +27,10 @@ const PlanetCard = (props) => {
 
       event.preventDefault()
 
-      actions.addFavorite(planetInfo.name)
+      store.favorites.includes(planetInfo.name)
+      ? actions.removeFavorite(event.target.id)
+      : actions.addFavorite(planetInfo.name)
+      
     }
 
     if(loading) return <li className="swiper-slide">

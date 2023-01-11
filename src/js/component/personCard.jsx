@@ -20,14 +20,19 @@ const PeopleCard = (props) => {
     }, [])
 
     useEffect(() => {
-      store.favorites.includes(characterInfo.name) ? setIsFavorite(<i className="fa-solid fa-heart"></i>) : setIsFavorite(<i className="fa-regular fa-heart"></i>);
+      store.favorites.includes(characterInfo.name)
+      ? setIsFavorite(<i className="fa-solid fa-heart"></i>)
+      : setIsFavorite(<i className="fa-regular fa-heart"></i>);
     }, [store.favorites])
 
     const handleFavorite = async (event) => {
 
       event.preventDefault()
 
-      actions.addFavorite(characterInfo.name)
+      store.favorites.includes(characterInfo.name)
+      ? actions.removeFavorite(event.target.id)
+      : actions.addFavorite(characterInfo.name)
+
     }
 
     if(loading) return <li className="swiper-slide">

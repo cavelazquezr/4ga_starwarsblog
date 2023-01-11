@@ -25,7 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			removeFavorite: (index) => {
 				const store = getStore();
 				store.favorites.splice(index, 1);
-				setStore([...store.favorites])
+				setStore({favorites: [...store.favorites]})
 			},
 
 			// Use getActions to call a function within a fuction
