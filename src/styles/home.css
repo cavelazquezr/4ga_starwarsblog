@@ -14,3 +14,8 @@
     overflow-x: auto;
 }
 
+.listBox{
+    width: 100%;
+    height: 425px;
+}
+
